@@ -1,0 +1,15 @@
+!.*
+**/coverage/**
+**/node_modules/**
+public
+dist
+logs
+
+# Yarn generated files
+**/.yarn
+**/.pnp.*
+
+# Extensions
+*.html
+*.css
+*.svg

@@ -1,0 +1,17 @@
+{
+  "name": "@sourceup/monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pravesa/sourceup.git"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=14.0.0",
+    "yarn": ">=3.3.0"
+  },
+  "packageManager": "yarn@3.3.0"
+}

@@ -4,6 +4,9 @@ dist
 # Dependency directories
 node_modules
 
+# Turbo directories
+.turbo
+
 # Yarn generated files
 .pnp.*
 .yarn/*

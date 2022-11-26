@@ -11,8 +11,13 @@
     "docs/*",
     "packages/*"
   ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build"
+  },
   "devDependencies": {
     "prettier": "^2.8.0",
+    "turbo": "^1.6.3",
     "typescript": "^4.9.3"
   },
   "engines": {

@@ -1,0 +1,14 @@
+{
+  "name": "issues_faced",
+  "version": "0.0.0",
+  "description": "Documentation on issues faced and it's solutions",
+  "author": "Praveen Saravanan <praveen747757@gmail.com>",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pravesa/sourceup.git",
+    "directory": "docs/issues_faced"
+  },
+  "packageManager": "yarn@3.3.0"
+}

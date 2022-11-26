@@ -1,15 +1,8 @@
-// Root eslint config file
+// Base eslint configs
 /**
  * @type {import('eslint').Linter.Config}
  */
 module.exports = {
-  // Stops eslint from looking for config files in parent directory
-  root: true,
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
-  },
   extends: [
     'eslint:recommended',
     'plugin:import/recommended',
@@ -23,21 +16,9 @@ module.exports = {
   rules: {
     strict: ['error', 'never'],
     'array-callback-return': ['error', {allowImplicit: true}],
-    'arrow-body-style': [
-      'error',
-      'as-needed',
-      {
-        requireReturnForObjectLiteral: false,
-      },
-    ],
     'arrow-parens': ['error', 'always'],
-    'prefer-arrow-callback': [
-      'error',
-      {
-        allowNamedFunctions: false,
-        allowUnboundThis: true,
-      },
-    ],
+    'arrow-body-style': 'off',
+    'prefer-arrow-callback': 'off',
     'prefer-const': [
       'error',
       {
@@ -136,6 +117,7 @@ module.exports = {
     ],
     'semi-spacing': ['error', {before: false, after: true}],
     'semi-style': ['error', 'last'],
+    'prettier/prettier': 'error',
 
     // import rules
     'import/no-unresolved': 'error',
@@ -147,16 +129,13 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.ts{x}'],
+      files: ['**/*.{ts,tsx}'],
       extends: ['plugin:@typescript-eslint/recommended'],
       parser: '@typescript-eslint/parser',
       plugins: ['@typescript-eslint'],
     },
   ],
   settings: {
-    react: {
-      version: 'detect',
-    },
     'import/parsers': {
       '@typescript-eslint/parser': ['.ts', '.tsx'],
     },

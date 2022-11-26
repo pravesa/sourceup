@@ -1,0 +1,44 @@
+{
+  "name": "eslint-config-sourceup",
+  "version": "1.0.0",
+  "description": "Sourceup's shared eslint config",
+  "author": "Praveen Saravanan <praveen747757@gmail.com>",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pravesa/sourceup.git",
+    "directory": "packages/eslint-config-sourceup"
+  },
+  "main": "index.js",
+  "types": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./react-app": "./react-app.js"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.44.0",
+    "@typescript-eslint/parser": "^5.44.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.11",
+    "eslint-plugin-react-hooks": "^4.6.0"
+  },
+  "devDependencies": {
+    "@types/eslint": "^8.4.10"
+  },
+  "peerDependencies": {
+    "eslint": ">=3.0.0",
+    "prettier": ">=2.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "packageManager": "yarn@3.3.0",
+  "publishConfig": {
+    "access": "public"
+  }
+}

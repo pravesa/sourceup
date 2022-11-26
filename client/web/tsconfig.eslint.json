@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    // Ensure that nobody can accidentally use this config for a build
+    "noEmit": true
+  },
+  "include": [
+    // Whatever paths you intend to lint
+    "src",
+    "vite.config.ts"
+  ]
+}

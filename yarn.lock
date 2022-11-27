@@ -1115,7 +1115,7 @@ __metadata:
     dotenv: ^16.0.3
     esbuild: ^0.15.15
     eslint: ^8.28.0
-    eslint-config-sourceup: "workspace:^"
+    eslint-config-sourceup: "workspace:*"
     express: ^4.18.2
     morgan: ^1.10.0
     nodemon: ^2.0.20
@@ -1985,7 +1985,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-sourceup@workspace:^, eslint-config-sourceup@workspace:packages/eslint-config-sourceup":
+"eslint-config-sourceup@workspace:*, eslint-config-sourceup@workspace:packages/eslint-config-sourceup":
   version: 0.0.0-use.local
   resolution: "eslint-config-sourceup@workspace:packages/eslint-config-sourceup"
   dependencies:
@@ -5143,7 +5143,7 @@ __metadata:
     "@types/react-dom": ^18.0.8
     "@vitejs/plugin-react": ^2.2.0
     eslint: ^8.28.0
-    eslint-config-sourceup: "workspace:^"
+    eslint-config-sourceup: "workspace:*"
     prettier: ^2.8.0
     react: ^18.2.0
     react-dom: ^18.2.0

@@ -1,2 +1,2 @@
-// eslint-disable-next-line import/prefer-default-export
+export {default as dbClient} from './database';
 export {default as logger} from './logger';

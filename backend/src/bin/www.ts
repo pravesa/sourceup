@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import DEBUG from 'debug';
 import 'dotenv/config';
 import {createServer} from 'http';

@@ -13,8 +13,7 @@
   },
   "main": "src/bin/www",
   "scripts": {
-    "serve": "set DEBUG=node:*,express:*,mongodb:* & nodemon",
-    "start": "es-node-runner",
+    "serve": "es-node-runner --debug 'node:*,express:*,mongodb:*'",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -37,7 +36,6 @@
     "es-node-runner": "^2.1.0",
     "eslint": "^8.28.0",
     "eslint-config-sourceup": "workspace:*",
-    "nodemon": "^2.0.20",
     "prettier": "^2.8.0"
   },
   "engines": {

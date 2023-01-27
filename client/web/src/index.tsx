@@ -4,7 +4,7 @@ import {BrowserRouter} from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
-import {UserAccount} from './routes';
+import {UserAccount} from './routes/account';
 
 const root = createRoot(document.getElementById('root') as HTMLElement);
 

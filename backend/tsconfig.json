@@ -3,6 +3,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "lib": ["ESNext"],
+    "module": "ESNext",
 
     "allowJs": false,
     "allowSyntheticDefaultImports": true,

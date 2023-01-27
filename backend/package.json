@@ -5,6 +5,7 @@
   "author": "Praveen Saravanan <praveen747757@gmail.com>",
   "private": true,
   "license": "MIT",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/pravesa/sourceup.git",

@@ -18,6 +18,7 @@ import {
   getSessionHandler,
   routeNotFoundHandler,
 } from './handlers';
+import {accountRouter} from './routes';
 
 // Initiate express app
 const app = express();
@@ -63,6 +64,9 @@ app.use(
     },
   })
 );
+
+// User account handler
+app.use('/s/api/account', accountRouter);
 
 // Authenticate user session. This should be placed after signin / signup route.
 // Otherwise, those routes cannot be accessed without authentication.

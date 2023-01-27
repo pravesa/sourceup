@@ -25,4 +25,7 @@ try {
 // Create db instance
 const db = client.db(process.env.DB_NAME);
 
+// Create unique indexes
+db.collection('users').createIndex({gstn: 1}, {unique: true});
+
 export {db, client};

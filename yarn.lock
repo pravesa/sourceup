@@ -4054,7 +4054,7 @@ __metadata:
     connect-mongo: ^4.6.0
     debug: ^4.3.4
     dotenv: ^16.0.3
-    es-node-runner: ^2.1.0
+    es-node-runner: ^2.2.0
     eslint: ^8.28.0
     eslint-config-sourceup: "workspace:*"
     express: ^4.18.2
@@ -4905,9 +4905,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"es-node-runner@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "es-node-runner@npm:2.1.0"
+"es-node-runner@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "es-node-runner@npm:2.2.0"
   dependencies:
     chokidar: ^3.5.3
     cross-spawn: ^7.0.3
@@ -4915,7 +4915,7 @@ __metadata:
     esbuild: ^0.16.4
   bin:
     es-node-runner: lib/index.js
-  checksum: 0b8a2dba84e7eb76da21f42f38a5b99ea55c30754ed18ad08cdf86d475c7ffe013007905747d585c3dc995fe7fb1bed8140794768be807dfb5e177bf02cae1a0
+  checksum: f0f1bc115cf54b163e38d08322bfd72c6778fc72ad35032c6e5a2199c40e980cdb319f98d8a6c14f43f06713074733a9e7f82b6cdd5c4d4d4e86e2654365a4a9
   languageName: node
   linkType: hard
 

@@ -33,7 +33,7 @@
     "@types/express": "^4.17.14",
     "@types/express-session": "^1.17.5",
     "@types/morgan": "^1.9.3",
-    "es-node-runner": "^2.1.0",
+    "es-node-runner": "^2.2.0",
     "eslint": "^8.28.0",
     "eslint-config-sourceup": "workspace:*",
     "prettier": "^2.8.0"

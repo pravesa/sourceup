@@ -14,7 +14,8 @@
   "main": "src/bin/www",
   "scripts": {
     "serve": "es-node-runner --debug 'node:*,express:*,mongodb:*'",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "node --experimental-vm-modules ../node_modules/jest/bin/jest -i -o"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
@@ -32,11 +33,17 @@
     "@types/debug": "^4.1.7",
     "@types/express": "^4.17.14",
     "@types/express-session": "^1.17.5",
+    "@types/jest": "^29.4.0",
     "@types/morgan": "^1.9.3",
+    "@types/supertest": "^2.0.12",
     "es-node-runner": "^2.2.0",
     "eslint": "^8.28.0",
     "eslint-config-sourceup": "workspace:*",
-    "prettier": "^2.8.0"
+    "jest": "^29.4.2",
+    "mongodb-memory-server": "^8.11.4",
+    "prettier": "^2.8.0",
+    "supertest": "^6.3.3",
+    "ts-jest": "^29.0.5"
   },
   "engines": {
     "node": ">=14.0.0"

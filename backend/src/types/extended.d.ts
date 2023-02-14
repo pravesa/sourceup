@@ -11,6 +11,8 @@ declare global {
       SESSION_SECRET: string;
       DB_URI: string;
       DB_NAME: string;
+      // Environment variables set while starting MongoDB memory server
+      TEST_DB_URI: string;
     }
   }
 

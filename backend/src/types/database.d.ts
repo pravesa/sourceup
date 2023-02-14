@@ -27,7 +27,7 @@ declare global {
     gstn: string;
     pwd: string;
     mail: Mail;
-    loc: {
+    loc?: {
       regd: Address;
       head?: Address;
       plant: {

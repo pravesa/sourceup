@@ -4,7 +4,11 @@ import logger from './logger';
 
 const debug = DEBUG('mongodb:connection');
 
-const DB_CONN_URI = process.env.DB_URI || '';
+// Use mongodb memory server in test environment.
+const DB_CONN_URI =
+  process.env.NODE_ENV === 'test'
+    ? process.env.TEST_DB_URI
+    : process.env.DB_URI;
 
 // Instance of mongodb client
 let client: MongoClient;

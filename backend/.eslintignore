@@ -3,6 +3,7 @@
 public
 dist
 logs
+jest.config.ts
 
 # Yarn generated files
 **/.yarn

@@ -15,7 +15,7 @@
   "scripts": {
     "serve": "es-node-runner --debug 'node:*,express:*,mongodb:*'",
     "lint": "eslint .",
-    "test": "node --experimental-vm-modules ../node_modules/jest/bin/jest -i -o"
+    "test": "node --experimental-vm-modules ../node_modules/jest/bin/jest -i"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",

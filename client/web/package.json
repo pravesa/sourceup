@@ -17,10 +17,10 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "lint:fix": "yarn lint --fix",
-    "pw:test": "playwright test --config=playwright.config.ts",
-    "ctest": "yarn pw:test --project=chromium",
-    "ftest": "yarn pw:test --project=firefox",
-    "wtest": "yarn pw:test --project=webkit"
+    "test": "playwright test --config=playwright.config.ts",
+    "ctest": "yarn test --project=chromium",
+    "ftest": "yarn test --project=firefox",
+    "wtest": "yarn test --project=webkit"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",

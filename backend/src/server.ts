@@ -25,21 +25,23 @@ const app = express();
 
 app.disable('x-powered-by');
 
-const accessLog = path.join(process.cwd(), 'logs', 'access.log');
+if (process.env.NODE_ENV !== 'test') {
+  const accessLog = path.join(process.cwd(), 'logs', 'access.log');
 
-// Create access.log file if not already exist
-if (!existsSync(accessLog)) {
-  writeFileSync(accessLog, '');
+  // Create access.log file if not already exist
+  if (!existsSync(accessLog)) {
+    writeFileSync(accessLog, '');
+  }
+
+  // Logs server requests which is piped to access.log file
+  app.use(
+    morgan('common', {
+      stream: createWriteStream(accessLog, {
+        flags: 'a',
+      }),
+    })
+  );
 }
-
-// Logs server requests which is piped to access.log file
-app.use(
-  morgan('common', {
-    stream: createWriteStream(accessLog, {
-      flags: 'a',
-    }),
-  })
-);
 
 // Parses incoming requests with json payload
 app.use(json());
@@ -53,7 +55,9 @@ app.use(
       dbName: process.env.DB_NAME,
       collectionName: 'session',
     }),
-    secret: process.env.SESSION_SECRET.split(', '),
+    secret:
+      process.env.SESSION_SECRET?.split(', ') ??
+      'JvHVjmv86HGTXDKxfd7868XGFgfch',
     resave: false,
     saveUninitialized: false,
     cookie: {

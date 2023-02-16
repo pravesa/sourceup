@@ -1,0 +1,33 @@
+name: CI
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install dependencies
+        run: yarn install
+      - name: Install Playwright Browsers
+        run: yarn workspace web playwright install --with-deps
+      - name: Run API Endpoint tests
+        run: yarn workspace backend test
+      - name: Run Playwright Chromium tests
+        run: yarn workspace web ctest
+      - name: Run Playwright Firefox tests
+        run: yarn workspace web ftest
+      - name: Run Playwright Webkit tests
+        run: yarn workspace web wtest
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30

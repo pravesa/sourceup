@@ -34,7 +34,10 @@ const db = client.db(process.env.DB_NAME);
 db.collection('users').createIndex({gstn: 1}, {unique: true});
 
 if (process.env.NODE_ENV === 'test') {
-  initiateTestAccount();
+  const data = await initiateTestAccount();
+
+  // Insert the mock user account to users collection
+  await db.collection<User>('users').insertOne({...data});
 }
 
 export {db, client};

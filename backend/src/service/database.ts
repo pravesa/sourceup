@@ -1,6 +1,7 @@
 import {MongoClient} from 'mongodb';
 import DEBUG from 'debug';
 import logger from './logger';
+import {initiateTestAccount} from '../test/setupTestAccount';
 
 const debug = DEBUG('mongodb:connection');
 
@@ -31,5 +32,9 @@ const db = client.db(process.env.DB_NAME);
 
 // Create unique indexes
 db.collection('users').createIndex({gstn: 1}, {unique: true});
+
+if (process.env.NODE_ENV === 'test') {
+  initiateTestAccount();
+}
 
 export {db, client};

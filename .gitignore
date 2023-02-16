@@ -4,6 +4,11 @@ dist
 # Dependency directories
 node_modules
 
+# Test Reports
+/test-results/
+/playwright-report/
+/playwright/.cache/
+
 # Turbo directories
 .turbo
 

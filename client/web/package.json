@@ -16,7 +16,11 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "yarn lint --fix",
+    "pw:test": "playwright test --config=playwright.config.ts",
+    "ctest": "yarn pw:test --project=chromium",
+    "ftest": "yarn pw:test --project=firefox",
+    "wtest": "yarn pw:test --project=webkit"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -30,6 +34,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@playwright/test": "^1.30.0",
     "@svgr/rollup": "^6.5.1",
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.24",

@@ -7,6 +7,7 @@
   "include": [
     // Whatever paths you intend to lint
     "src",
-    "vite.config.ts"
+    "vite.config.ts",
+    "playwright.config.ts"
   ]
 }

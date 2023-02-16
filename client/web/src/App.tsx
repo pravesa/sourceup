@@ -1,4 +1,5 @@
 import {Route, Routes} from 'react-router-dom';
+import AppLayout from './AppLayout';
 import {AuthenticateUser, SigninPage, SignupPage} from './routes/account';
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
         path="/"
         element={
           <AuthenticateUser>
-            <h1>Hello World</h1>
+            <AppLayout />
           </AuthenticateUser>
         }
       ></Route>

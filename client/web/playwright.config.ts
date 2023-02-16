@@ -13,6 +13,7 @@ import path from 'path';
 export default defineConfig({
   testDir: './src',
   testMatch: ['/**/tests/*.*(test|spec).ts' /* Match integration test files */],
+  globalSetup: './src/test/globalSetup',
   /* Maximum time one test can run for. */
   timeout: 60 * 1000,
   expect: {
@@ -38,6 +39,8 @@ export default defineConfig({
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: 'http://localhost:3000',
+
+    storageState: path.resolve('.', 'src/test/state.json'),
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',

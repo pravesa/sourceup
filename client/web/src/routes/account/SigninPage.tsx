@@ -17,7 +17,9 @@ import {
   ToggleVisibility,
 } from '../../components';
 import {useValidate, useFetch} from '../../lib';
+import {useAppDispatch} from '../../redux-hooks';
 import {FieldProps, ServerResponse, ResponseAlert} from '../../types';
+import {setProfile} from '../settings/slices/profileSlice';
 import AccountPageLayout from './AccountPageLayout';
 import {useAuth} from './UserAccount';
 
@@ -44,6 +46,8 @@ const SigninPage = () => {
     useValidate(initialValues, schema);
   const [hidden, setHidden] = useState(true);
   const [alert, setAlert] = useState<ResponseAlert | undefined>(undefined);
+
+  const dispatch = useAppDispatch();
 
   // Method for updating user context
   const {updateUser} = useAuth();
@@ -103,6 +107,7 @@ const SigninPage = () => {
         if (res.status === 200) {
           // Set user context with authenticated user
           updateUser({...res.payload, isSignedIn: true}, () => {
+            dispatch(setProfile(res.payload));
             // Navigate to home page on status 200
             navigate('/', {replace: true});
           });

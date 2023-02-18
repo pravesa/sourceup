@@ -183,6 +183,7 @@ const PlantAddress = (props: PlantAddressProps): JSX.Element => {
         )}
       </Stack>
       <DataGrid
+        aria-label="Factory address"
         autoHeight
         rows={
           plant

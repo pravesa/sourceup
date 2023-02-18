@@ -178,6 +178,7 @@ const WarehouseAddress = (props: WarehouseAddressProps): JSX.Element => {
         )}
       </Stack>
       <DataGrid
+        aria-label="Warehouse address"
         autoHeight
         rows={
           warehouse

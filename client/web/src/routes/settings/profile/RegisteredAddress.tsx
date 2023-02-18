@@ -77,13 +77,16 @@ const RegisteredAddress = (props: RegisteredAddressProps): JSX.Element => {
             color="primary"
             sx={{ml: 'auto'}}
             onClick={handleOpen}
-            aria-label={props.isFieldError ? 'Add' : 'Edit'}
+            aria-label={
+              (props.isFieldError ? 'add' : 'edit') + ' registered address'
+            }
           >
             {props.isFieldError ? <AddOutlined /> : <EditOutlined />}
           </IconButton>
         </Tooltip>
       </Stack>
       <DataGrid
+        aria-label="Registered address"
         autoHeight
         rows={regd ? [{id: 1, ...regd}] : []}
         columns={columns}

@@ -112,6 +112,7 @@ const HeadOfficeAddress = (props: HeadOfficeAddressProps): JSX.Element => {
         ></FormControlLabel>
       </Box>
       <DataGrid
+        aria-label="Head Office address"
         autoHeight
         rows={head ? [{id: 1, ...head}] : []}
         columns={columns}

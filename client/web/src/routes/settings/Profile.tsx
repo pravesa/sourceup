@@ -150,6 +150,7 @@ const Profile = () => {
           variant="contained"
           disabled={isSaveDisabled()}
           onClick={handleSave}
+          aria-label="Save profile"
           startIcon={
             isPending ? (
               <Box display="flex">

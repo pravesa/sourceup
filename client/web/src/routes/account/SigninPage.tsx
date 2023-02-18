@@ -107,8 +107,10 @@ const SigninPage = () => {
         if (res.status === 200) {
           // Set user context with authenticated user
           updateUser({...res.payload, isSignedIn: true}, () => {
-            dispatch(setProfile(res.payload));
-            storage.set('profile', {...res.payload});
+            if (res.payload?.name) {
+              dispatch(setProfile(res.payload));
+              storage.set('profile', {...res.payload});
+            }
             // Navigate to home page on status 200
             navigate('/', {replace: true});
           });

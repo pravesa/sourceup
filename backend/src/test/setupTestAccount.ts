@@ -12,7 +12,6 @@ export const initiateTestAccount = async () => {
   // Mock user account
   const data: User = {
     _id: 'user@test.com',
-    name: 'testuser',
     pwd: encryptedPwd,
     gstn: '33ABCDE1234F1GH',
     mail: {

@@ -23,7 +23,7 @@ declare global {
   // User collection fields
   interface User {
     _id: string;
-    name: string;
+    name?: string;
     gstn: string;
     pwd: string;
     mail: Mail;

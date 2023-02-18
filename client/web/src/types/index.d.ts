@@ -52,13 +52,8 @@ export type StepFormProps = Pick<FormProps, 'onValueChange'> & {
  */
 export type ServerResponse = {
   payload?: {
-    _id?: string;
-    uname?: string;
-    org?: Array<string>;
-    pref?: {
-      [k: string]: unknown;
-    };
-    [k: string]: unknown;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [k: string]: any;
   };
   status: number;
   statusText: string;

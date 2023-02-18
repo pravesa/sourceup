@@ -102,7 +102,7 @@ const Profile = () => {
   };
 
   const isPlantAddressEmpty = () => {
-    return Object.keys(plant).length === 0;
+    return plant ? Object.keys(plant).length === 0 : true;
   };
 
   const isSaveDisabled = () => {

@@ -184,9 +184,13 @@ const PlantAddress = (props: PlantAddressProps): JSX.Element => {
       </Stack>
       <DataGrid
         autoHeight
-        rows={Object.entries(plant).map((val) => {
-          return {id: val[0], ...val[1]};
-        })}
+        rows={
+          plant
+            ? Object.entries(plant).map((val) => {
+                return {id: val[0], ...val[1]};
+              })
+            : []
+        }
         columns={[{field: 'id', headerName: 'ID', minWidth: 70}, ...columns]}
         pageSize={5}
         rowsPerPageOptions={[5]}

@@ -7,6 +7,7 @@ export type FieldProps = {
   name: string;
   label: string;
   placeholder?: string;
+  required?: boolean;
   inputMode?: TextFieldProps['inputMode'];
   select?: boolean;
   options?: {value: string | number; label: string}[];

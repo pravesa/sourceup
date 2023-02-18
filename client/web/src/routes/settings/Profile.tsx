@@ -62,7 +62,15 @@ const Profile = () => {
   const handleSave = () => {
     dispatch(setGeneral(values));
 
-    const data = {name, mail, regd, head, plant, warehouse, isHeadSameAsRegd};
+    const data = {
+      name: values.name,
+      mail: {sec: values.mail},
+      regd,
+      head,
+      plant,
+      warehouse,
+      isHeadSameAsRegd,
+    };
 
     fetchData({
       url: '/s/api/settings/profile',

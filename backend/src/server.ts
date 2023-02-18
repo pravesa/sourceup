@@ -18,7 +18,7 @@ import {
   getSessionHandler,
   routeNotFoundHandler,
 } from './handlers';
-import {accountRouter} from './routes';
+import {accountRouter, settingsRouter} from './routes';
 
 // Initiate express app
 const app = express();
@@ -78,6 +78,9 @@ app.use(authenticateSessionHandler);
 
 // Get user session
 app.get('/s/api/verify-session', getSessionHandler);
+
+// User settings handler
+app.use('/s/api/settings', settingsRouter);
 
 // 404 (Not Found) handler. place this middleware after all routes.
 app.use(routeNotFoundHandler);

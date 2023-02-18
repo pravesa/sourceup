@@ -1,6 +1,7 @@
 import {Route, Routes} from 'react-router-dom';
 import AppLayout from './AppLayout';
 import {AuthenticateUser, SigninPage, SignupPage} from './routes/account';
+import {Settings} from './routes/settings';
 
 function App() {
   return (
@@ -14,7 +15,9 @@ function App() {
             <AppLayout />
           </AuthenticateUser>
         }
-      ></Route>
+      >
+        <Route path="/settings" element={<Settings />}></Route>
+      </Route>
     </Routes>
   );
 }

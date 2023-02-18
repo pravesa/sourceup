@@ -1,7 +1,7 @@
 import {AddOutlined, EditOutlined} from '@mui/icons-material';
 import {Typography, Chip, IconButton, Tooltip} from '@mui/material';
 import {Stack} from '@mui/system';
-import {DataGrid} from '@mui/x-data-grid';
+import {DataGrid, GridSelectionModel} from '@mui/x-data-grid';
 import {useState} from 'react';
 import {useAppSelector, useAppDispatch} from '../../../redux-hooks';
 import AddressDialog from './AddressDialog';
@@ -27,6 +27,8 @@ const RegisteredAddress = (props: RegisteredAddressProps): JSX.Element => {
 
   const [open, setOpen] = useState(false);
 
+  const [selected, setSelected] = useState<GridSelectionModel>([]);
+
   // Opens the address dialog.
   const handleOpen = () => {
     setOpen(true);
@@ -43,6 +45,16 @@ const RegisteredAddress = (props: RegisteredAddressProps): JSX.Element => {
   const handleData = (address: Address) => {
     handleClose();
     dispatch(setRegdAddress(address));
+  };
+
+  // Sets the selected row for edit or remove operations or unsets if the same
+  // row is clicked.
+  const handleSelection = (model: GridSelectionModel) => {
+    if (selected[0] === model[0]) {
+      setSelected([]);
+    } else {
+      setSelected(model);
+    }
   };
 
   return (
@@ -77,6 +89,8 @@ const RegisteredAddress = (props: RegisteredAddressProps): JSX.Element => {
         columns={columns}
         pageSize={1}
         rowsPerPageOptions={[1]}
+        selectionModel={selected}
+        onSelectionModelChange={(model) => handleSelection(model)}
       />
     </Stack>
   );

@@ -78,12 +78,15 @@ const AddressDialog = (props: AddressDialogProps): JSX.Element => {
   useEffect(() => {
     if (props.initialValue) {
       handleReset({...props.initialValue});
+    } else {
+      handleReset(initialValue);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.initialValue]);
 
   const handleData = () => {
     props.onData(values as Address);
+    handleReset();
   };
 
   // Field properties for the Address form.

@@ -36,7 +36,9 @@ function AppLayout() {
             </Stack>
           }
         >
-          <Outlet />
+          <Stack component="main" overflow="auto" flexGrow={1} pt={1} pb={2}>
+            <Outlet />
+          </Stack>
         </Suspense>
       </Stack>
     </Stack>

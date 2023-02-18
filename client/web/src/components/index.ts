@@ -5,3 +5,4 @@ export {default as ToggleVisibility} from './ToggleVisibility';
 export {default as TitleBar} from './TitleBar';
 export {default as SideBarLink} from './SideBarLink';
 export {default as SideBar} from './SideBar';
+export {default as TabPanel} from './TabPanel';

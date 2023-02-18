@@ -12,7 +12,7 @@ import {
 import {useState} from 'react';
 import {useAuth} from './UserAccount';
 import {AlertDialog, ButtonRouter} from '../../components';
-import {useFetch} from '../../lib';
+import {storage, useFetch} from '../../lib';
 import {ResponseAlert, ServerResponse} from '../../types';
 
 const SignOut = () => {
@@ -47,6 +47,7 @@ const SignOut = () => {
       .then((response: Response) => response.json())
       .then((res: ServerResponse) => {
         if (res.status === 200) {
+          storage.clear();
           updateUser({
             isSignedIn: false,
           });

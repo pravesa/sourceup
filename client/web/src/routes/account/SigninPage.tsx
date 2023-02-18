@@ -16,7 +16,7 @@ import {
   FormInput,
   ToggleVisibility,
 } from '../../components';
-import {useValidate, useFetch} from '../../lib';
+import {useValidate, useFetch, storage} from '../../lib';
 import {useAppDispatch} from '../../redux-hooks';
 import {FieldProps, ServerResponse, ResponseAlert} from '../../types';
 import {setProfile} from '../settings/slices/profileSlice';
@@ -108,6 +108,7 @@ const SigninPage = () => {
           // Set user context with authenticated user
           updateUser({...res.payload, isSignedIn: true}, () => {
             dispatch(setProfile(res.payload));
+            storage.set('profile', {...res.payload});
             // Navigate to home page on status 200
             navigate('/', {replace: true});
           });

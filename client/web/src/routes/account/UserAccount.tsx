@@ -1,7 +1,10 @@
 import {Stack, CircularProgress} from '@mui/material';
 import {createContext, ReactNode, useContext, useEffect, useState} from 'react';
 import {AlertDialog} from '../../components';
+import {storage} from '../../lib';
+import {useAppDispatch} from '../../redux-hooks';
 import {ResponseAlert, ServerResponse} from '../../types';
+import {setProfile} from '../settings/slices/profileSlice';
 
 // User account properties
 type UserProps = ServerResponse['payload'] & {
@@ -32,6 +35,8 @@ const UserAccount = (props: {children: ReactNode}) => {
 
   const [alert, setAlert] = useState<ResponseAlert | undefined>(undefined);
 
+  const dispatch = useAppDispatch();
+
   // Method for updating user context from child components
   const updateUser = (newValue: UserProps, callback?: () => void) => {
     setUser(newValue);
@@ -54,6 +59,11 @@ const UserAccount = (props: {children: ReactNode}) => {
         const {payload, ...resAlert} = res;
         if (res.status === 200) {
           updateUser({...payload, isSignedIn: true});
+
+          const profile = storage.get('profile');
+          if (profile) {
+            dispatch(setProfile(profile));
+          }
         } else if (res.status === 401) {
           setAlert({
             ...resAlert,

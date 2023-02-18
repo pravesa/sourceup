@@ -7,12 +7,14 @@ interface Profile {
     sec: string;
   };
   regd?: Address;
+  head?: Address;
   plant: {
     [k: string]: Address;
   };
   warehouse: {
     [k: string]: Address;
   };
+  isHeadSameAsRegd: boolean;
 }
 
 // Initial state of the profile
@@ -22,8 +24,10 @@ const initialState: Profile = {
     sec: '',
   },
   regd: undefined,
+  head: undefined,
   plant: {},
   warehouse: {},
+  isHeadSameAsRegd: false,
 };
 
 /**
@@ -36,20 +40,43 @@ export const profileSlice: import('@reduxjs/toolkit').Slice<Profile> =
     initialState,
     reducers: {
       /**
+       * Sets the user profile.
+       */
+      setProfile: (_state, action: PayloadAction<Profile>) => {
+        return action.payload;
+      },
+      /**
        * Sets the user's general information.
        */
       setGeneral: (
         state,
-        action: PayloadAction<{name: string; mail: {sec: string}}>
+        action: PayloadAction<{name: string; mail: string}>
       ) => {
         state.name = action.payload.name;
-        state.mail.sec = action.payload.mail.sec;
+        state.mail.sec = action.payload.mail;
       },
       /**
        * Sets the user's registered address.
        */
       setRegdAddress: (state, action: PayloadAction<Address>) => {
         state.regd = {...action.payload};
+        if (state.isHeadSameAsRegd) {
+          state.head = action.payload;
+        }
+      },
+      setIsHeadSameAsRegd: (state, action: PayloadAction<boolean>) => {
+        state.isHeadSameAsRegd = action.payload;
+        if (action.payload) {
+          state.head = state.regd;
+        } else {
+          state.head = undefined;
+        }
+      },
+      /**
+       * Sets the user's Head office address.
+       */
+      setHeadAddress: (state, action: PayloadAction<Address>) => {
+        state.head = action.payload;
       },
       /**
        * Sets the user's plant address for a specific plant ID.
@@ -88,8 +115,11 @@ export const profileSlice: import('@reduxjs/toolkit').Slice<Profile> =
  * Action creators for the profile slice.
  */
 export const {
+  setProfile,
   setGeneral,
   setRegdAddress,
+  setIsHeadSameAsRegd,
+  setHeadAddress,
   setPlantAddress,
   deletePlantAddress,
   setWarehouseAddress,

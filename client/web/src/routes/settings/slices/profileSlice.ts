@@ -10,6 +10,9 @@ interface Profile {
   plant: {
     [k: string]: Address;
   };
+  warehouse: {
+    [k: string]: Address;
+  };
 }
 
 // Initial state of the profile
@@ -20,6 +23,7 @@ const initialState: Profile = {
   },
   regd: undefined,
   plant: {},
+  warehouse: {},
 };
 
 /**
@@ -62,14 +66,35 @@ export const profileSlice: import('@reduxjs/toolkit').Slice<Profile> =
       deletePlantAddress: (state, action: PayloadAction<string>) => {
         delete state.plant[action.payload];
       },
+      /**
+       * Sets the user's warehouse address with an unique ID.
+       */
+      setWarehouseAddress: (
+        state,
+        action: PayloadAction<{id: string; address: Address}>
+      ) => {
+        state.warehouse[action.payload.id] = action.payload.address;
+      },
+      /**
+       * Deletes the user's warehouse address for a specific ID.
+       */
+      deleteWarehouseAddress: (state, action: PayloadAction<string>) => {
+        delete state.warehouse[action.payload];
+      },
     },
   });
 
 /**
  * Action creators for the profile slice.
  */
-export const {setGeneral, setRegdAddress, setPlantAddress, deletePlantAddress} =
-  profileSlice.actions;
+export const {
+  setGeneral,
+  setRegdAddress,
+  setPlantAddress,
+  deletePlantAddress,
+  setWarehouseAddress,
+  deleteWarehouseAddress,
+} = profileSlice.actions;
 
 /**
  * Selector function for getting the current user profile state.

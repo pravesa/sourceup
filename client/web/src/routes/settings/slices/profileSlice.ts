@@ -56,13 +56,19 @@ export const profileSlice: import('@reduxjs/toolkit').Slice<Profile> =
       ) => {
         state.plant[action.payload.id] = action.payload.address;
       },
+      /**
+       * Deletes the user's plant address for a specific plant ID.
+       */
+      deletePlantAddress: (state, action: PayloadAction<string>) => {
+        delete state.plant[action.payload];
+      },
     },
   });
 
 /**
  * Action creators for the profile slice.
  */
-export const {setGeneral, setRegdAddress, setPlantAddress} =
+export const {setGeneral, setRegdAddress, setPlantAddress, deletePlantAddress} =
   profileSlice.actions;
 
 /**

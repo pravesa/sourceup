@@ -37,7 +37,9 @@ const UserAccount = (props: {children: ReactNode}) => {
           dispatch(setUser(payload));
           navigate(toPath);
         } else if (res.status === 401) {
-          navigate('/signin', {state: {from: toPath}});
+          navigate(pathname === '/signup' ? '/signup' : '/signin', {
+            state: {from: toPath},
+          });
           setAlert({
             ...resAlert,
             severity: 'error',

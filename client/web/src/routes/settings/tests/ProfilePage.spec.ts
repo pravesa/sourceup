@@ -165,7 +165,7 @@ test.describe('Settings - Profile Tab', () => {
     await expect(saveProfile).toBeDisabled();
 
     // Add factory address
-    await addPlant.click();
+    await page.getByRole('button', {name: 'add plant address'}).click();
 
     await page.getByRole('textbox', {name: 'Factory ID'}).fill('plant1');
 

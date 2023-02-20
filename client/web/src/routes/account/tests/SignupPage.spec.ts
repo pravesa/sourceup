@@ -13,6 +13,8 @@ test.describe('Signup Page', () => {
     cnfPassword: Locator,
     signupBtn: Locator;
 
+  test.use({storageState: {cookies: [], origins: []}});
+
   // Goto signup route before each test case
   test.beforeEach(async ({page}) => {
     await page.goto('/signup');
@@ -125,7 +127,7 @@ test.describe('Signup Page', () => {
     page,
   }) => {
     // Fill with unregistered mock organisation details
-    await email.fill('user2@test.com');
+    await email.fill('testsignup@test.com');
     await gstn.fill('33BCDEF1234G1HI');
     await password.fill(mockPassword);
     await cnfPassword.fill(mockPassword);

@@ -8,9 +8,11 @@ const mockPassword = 'test@123';
 test.describe('Signin Page', () => {
   let email: Locator, password: Locator, signinBtn: Locator, createBtn: Locator;
 
+  test.use({storageState: {cookies: [], origins: []}});
+
   // Goto signin route before each test case
   test.beforeEach(async ({page}) => {
-    await page.goto('/signin');
+    await page.goto('/');
 
     email = page.getByRole('textbox', {name: /Email ID/i});
     password = page.getByLabel(/Password/i);

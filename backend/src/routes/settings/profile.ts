@@ -37,7 +37,7 @@ const profileRoute = async (req: RequestBodyWithPayload, res: Response) => {
         {
           $set: {
             name: name,
-            'mail.sec': mail.sec,
+            mail: mail,
             regd: regd,
             head: head,
             ...toFlattenObject(plant ?? {}, 'plant'),
@@ -56,6 +56,8 @@ const profileRoute = async (req: RequestBodyWithPayload, res: Response) => {
           statusText: 'OK',
           message: 'Profile updated successfully',
         };
+        // update user session data
+        req.session.user = {...req.session.user, ...req.body.payload};
 
         logger.info(client, 'profile updated successfully');
       } else {

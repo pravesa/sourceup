@@ -14,10 +14,10 @@ import {useState} from 'react';
 import {useAppSelector, useAppDispatch} from '../../../redux-hooks';
 import AddressDialog from './AddressDialog';
 import {
-  getProfile,
+  getUser,
   setHeadAddress,
   setIsHeadSameAsRegd,
-} from '../slices/profileSlice';
+} from '../../account/slices/userSlice';
 import columns from './AddressColDef';
 
 /**
@@ -34,7 +34,7 @@ interface HeadOfficeAddressProps {
  * @returns {JSX.Element} The rendered component.
  */
 const HeadOfficeAddress = (props: HeadOfficeAddressProps): JSX.Element => {
-  const {isHeadSameAsRegd, head} = useAppSelector(getProfile);
+  const {isHeadSameAsRegd, head} = useAppSelector(getUser);
   const dispatch = useAppDispatch();
 
   const [open, setOpen] = useState(false);

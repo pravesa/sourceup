@@ -3,14 +3,14 @@ import {Stack, Button, Typography, Box, CircularProgress} from '@mui/material';
 import {useState} from 'react';
 import {object, string} from 'yup';
 import {AlertDialog, FormInput} from '../../components';
-import {storage, useFetch, useValidate} from '../../lib';
+import {useFetch, useValidate} from '../../lib';
 import {useAppDispatch, useAppSelector} from '../../redux-hooks';
 import {ResponseAlert, FieldProps, ServerResponse} from '../../types';
 import HeadOfficeAddress from './profile/HeadOfficeAddress';
 import PlantAddress from './profile/PlantAddress';
 import RegisteredAddress from './profile/RegisteredAddress';
 import WarehouseAddress from './profile/WarehouseAddress';
-import {getProfile, setGeneral} from './slices/profileSlice';
+import {getUser, setGeneral} from '../account/slices/userSlice';
 
 const schema = object({
   name: string().required('Company Name is required'),
@@ -19,12 +19,12 @@ const schema = object({
 
 const Profile = () => {
   const {name, mail, regd, head, plant, warehouse, isHeadSameAsRegd} =
-    useAppSelector(getProfile);
+    useAppSelector(getUser);
   const dispatch = useAppDispatch();
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [values, fieldErrors, handleValue, _handleReset, formError] =
-    useValidate({name, mail: mail.sec}, schema);
+    useValidate({name, mail: mail.sec ?? ''}, schema);
 
   const [fetchData, isPending] = useFetch();
 
@@ -64,7 +64,7 @@ const Profile = () => {
 
     const data = {
       name: values.name,
-      mail: {sec: values.mail},
+      mail: {...mail, sec: values.mail},
       regd,
       head,
       plant,
@@ -87,7 +87,6 @@ const Profile = () => {
       .then((response: Response) => response.json())
       .then((res: ServerResponse) => {
         if (res.status === 200) {
-          storage.set('profile', data);
           setAlert({...res, severity: 'success'});
         } else {
           setAlert({...res, severity: 'error'});

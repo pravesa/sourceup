@@ -18,9 +18,9 @@ import {useAppSelector, useAppDispatch} from '../../../redux-hooks';
 import AddressDialog from './AddressDialog';
 import {
   deleteWarehouseAddress,
-  getProfile,
+  getUser,
   setWarehouseAddress,
-} from '../slices/profileSlice';
+} from '../../account/slices/userSlice';
 import columns from './AddressColDef';
 import {FormInput} from '../../../components';
 import {useValidate} from '../../../lib';
@@ -44,7 +44,7 @@ const schema = object({
  * @returns {JSX.Element} The rendered component.
  */
 const WarehouseAddress = (props: WarehouseAddressProps): JSX.Element => {
-  const {warehouse} = useAppSelector(getProfile);
+  const {warehouse} = useAppSelector(getUser);
   const dispatch = useAppDispatch();
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

@@ -5,8 +5,8 @@ import {DataGrid, GridSelectionModel} from '@mui/x-data-grid';
 import {useState} from 'react';
 import {useAppSelector, useAppDispatch} from '../../../redux-hooks';
 import AddressDialog from './AddressDialog';
-import {getProfile, setRegdAddress} from '../slices/profileSlice';
 import columns from './AddressColDef';
+import {getUser, setRegdAddress} from '../../account/slices/userSlice';
 
 /**
  * @typedef {Object} RegisteredAddressProps
@@ -22,7 +22,7 @@ interface RegisteredAddressProps {
  * @returns {JSX.Element} The rendered component.
  */
 const RegisteredAddress = (props: RegisteredAddressProps): JSX.Element => {
-  const {regd} = useAppSelector(getProfile);
+  const {regd} = useAppSelector(getUser);
   const dispatch = useAppDispatch();
 
   const [open, setOpen] = useState(false);

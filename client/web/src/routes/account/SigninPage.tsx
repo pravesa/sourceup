@@ -8,7 +8,7 @@ import {
   CardContent,
 } from '@mui/material';
 import {useState, FormEvent} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import {object, string} from 'yup';
 import {
   AlertDialog,
@@ -16,12 +16,11 @@ import {
   FormInput,
   ToggleVisibility,
 } from '../../components';
-import {useValidate, useFetch, storage} from '../../lib';
+import {useValidate, useFetch} from '../../lib';
 import {useAppDispatch} from '../../redux-hooks';
 import {FieldProps, ServerResponse, ResponseAlert} from '../../types';
-import {setProfile} from '../settings/slices/profileSlice';
 import AccountPageLayout from './AccountPageLayout';
-import {useAuth} from './UserAccount';
+import {setUser} from './slices/userSlice';
 
 // Yup validation schema for signin form
 const schema = object({
@@ -49,9 +48,8 @@ const SigninPage = () => {
 
   const dispatch = useAppDispatch();
 
-  // Method for updating user context
-  const {updateUser} = useAuth();
   const navigate = useNavigate();
+  const {state} = useLocation();
 
   const [fetchData, isPending] = useFetch();
 
@@ -105,15 +103,10 @@ const SigninPage = () => {
       .then((response: Response) => response.json())
       .then((res: ServerResponse) => {
         if (res.status === 200) {
-          // Set user context with authenticated user
-          updateUser({...res.payload, isSignedIn: true}, () => {
-            if (res.payload?.name) {
-              dispatch(setProfile(res.payload));
-              storage.set('profile', {...res.payload});
-            }
-            // Navigate to home page on status 200
-            navigate('/', {replace: true});
-          });
+          dispatch(setUser(res.payload));
+
+          // Navigate to home page on status 200
+          navigate(state !== null ? state.from : '/', {replace: true});
         } else {
           setAlert({...res, severity: 'error'});
           // Reset the field for 404 or 401 status

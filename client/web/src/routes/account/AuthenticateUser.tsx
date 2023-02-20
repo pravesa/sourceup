@@ -1,12 +1,13 @@
 import {Navigate, useLocation} from 'react-router-dom';
-import {useAuth} from './UserAccount';
+import {useAppSelector} from '../../redux-hooks';
+import {getUser} from './slices/userSlice';
 
 // Render children component if user is signed in else redirect to sign in page.
 const AuthenticateUser = (props: {children: JSX.Element}) => {
-  const {user} = useAuth();
+  const {_id, gstn} = useAppSelector(getUser);
   const {pathname} = useLocation();
 
-  if (user.isSignedIn && user._id) {
+  if (_id !== '' && gstn !== '') {
     return props.children;
   }
   return <Navigate to="/signin" state={{from: pathname}} replace={true} />;

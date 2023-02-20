@@ -2,7 +2,7 @@ export {};
 
 type Mail = {
   pri: string;
-  sec?: Array<string>;
+  sec?: string;
 };
 
 declare global {
@@ -24,15 +24,14 @@ declare global {
     _id: string;
     name: string;
     gstn: string;
-    pwd: string;
     mail: Mail;
-    regd: Address;
-    head: Address;
+    regd?: Address;
+    head?: Address;
     isHeadSameAsRegd: boolean;
     plant: {
       [k: string]: Address;
     };
-    warehouse?: {
+    warehouse: {
       [k: string]: Address;
     };
     other?: {

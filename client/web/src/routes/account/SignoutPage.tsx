@@ -10,17 +10,18 @@ import {
   Typography,
 } from '@mui/material';
 import {useState} from 'react';
-import {useAuth} from './UserAccount';
 import {AlertDialog, ButtonRouter} from '../../components';
 import {storage, useFetch} from '../../lib';
+import {useAppDispatch} from '../../redux-hooks';
 import {ResponseAlert, ServerResponse} from '../../types';
+import {resetUser} from './slices/userSlice';
 
 const SignOut = () => {
   const [open, setOpen] = useState(false);
-  const {updateUser} = useAuth();
   const [alert, setAlert] = useState<ResponseAlert | undefined>(undefined);
 
   const [fetchData] = useFetch();
+  const dispatch = useAppDispatch();
 
   const handleOpen = () => {
     setOpen(true);
@@ -48,9 +49,7 @@ const SignOut = () => {
       .then((res: ServerResponse) => {
         if (res.status === 200) {
           storage.clear();
-          updateUser({
-            isSignedIn: false,
-          });
+          dispatch(resetUser({}));
         } else {
           setAlert({...res, severity: 'error'});
         }

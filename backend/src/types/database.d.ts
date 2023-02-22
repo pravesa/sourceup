@@ -43,4 +43,32 @@ declare global {
       [k: string]: unknown;
     };
   }
+
+  interface Material {
+    id: string;
+    gsm: number;
+    width: number;
+    length?: number;
+    material: 'kraft' | 'duplex';
+    bf: number;
+    color:
+      | 'brown'
+      | 'golden brown'
+      | 'natural'
+      | 'yellow'
+      | 'golden yellow'
+      | 'white'
+      | 'white back'
+      | 'silver';
+    type: 'reel' | 'sheet';
+    loc?: string;
+    minLimit: number;
+    maxLimit: number;
+    stock: number;
+  }
+
+  type Inventory = {
+    _id: string;
+    stocks: Material[];
+  };
 }

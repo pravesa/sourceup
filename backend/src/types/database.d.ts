@@ -71,4 +71,30 @@ declare global {
     _id: string;
     stocks: Material[];
   };
+
+  type Requirements = {
+    _id: string;
+    companyName: string;
+    items: Array<{
+      id: string;
+      name: string;
+      spec: {
+        dimension: string;
+        ply: number;
+        gsm: string;
+        bf: string;
+        bs: string;
+        material: string;
+        color: string;
+        printing: string;
+      };
+      moq: number;
+    }>;
+  };
+
+  type Quotations = {
+    [k: string]: {
+      [k: string]: Array<{quotedAt: Date; rate: number}>;
+    };
+  };
 }

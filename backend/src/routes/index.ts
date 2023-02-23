@@ -2,3 +2,4 @@
 export {default as accountRouter} from './account';
 export {default as settingsRouter} from './settings';
 export {default as inventoryRouter} from './inventory';
+export {default as quotationRouter} from './quotation';

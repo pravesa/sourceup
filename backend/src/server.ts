@@ -18,7 +18,12 @@ import {
   getSessionHandler,
   routeNotFoundHandler,
 } from './handlers';
-import {accountRouter, settingsRouter, inventoryRouter} from './routes';
+import {
+  accountRouter,
+  settingsRouter,
+  inventoryRouter,
+  quotationRouter,
+} from './routes';
 
 // Initiate express app
 const app = express();
@@ -84,6 +89,9 @@ app.use('/s/api/settings', settingsRouter);
 
 // Inventory handler
 app.use('/s/api/inventory', inventoryRouter);
+
+// Inventory handler
+app.use('/s/api/quotation', quotationRouter);
 
 // 404 (Not Found) handler. place this middleware after all routes.
 app.use(routeNotFoundHandler);

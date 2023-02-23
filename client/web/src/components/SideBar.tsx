@@ -2,8 +2,8 @@ import {
   ContactsOutlined,
   DashboardOutlined,
   InventoryOutlined,
+  ReceiptOutlined,
   SettingsOutlined,
-  ShoppingCartOutlined,
 } from '@mui/icons-material';
 import {Drawer, List, ListItem, Toolbar} from '@mui/material';
 import {useLocation} from 'react-router-dom';
@@ -21,14 +21,14 @@ type SideBarProps = {
 const NavLinks: SideBarLinkProps[] = [
   {menu: 'Dashboard', href: '/dashboard', menuIcon: <DashboardOutlined />},
   {
-    menu: 'Orders',
-    href: '/orders',
-    menuIcon: <ShoppingCartOutlined />,
-  },
-  {
     menu: 'Inventory',
     href: '/inventory',
     menuIcon: <InventoryOutlined />,
+  },
+  {
+    menu: 'Quotation',
+    href: '/quotation',
+    menuIcon: <ReceiptOutlined />,
   },
   {menu: 'Contacts', href: 'contacts', menuIcon: <ContactsOutlined />},
 ];
